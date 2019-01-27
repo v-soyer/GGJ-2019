@@ -11,11 +11,7 @@ public class InitializeHideOut : MonoBehaviour
     {
         for (int i = 0; i < HideOuts.Count; i++)
         {
-            GameObject actual = HideOuts[i];
-            if (actual.name == "Malle")
-            {
-                Debug.Log(i);
-            }
+
         }
     }
 

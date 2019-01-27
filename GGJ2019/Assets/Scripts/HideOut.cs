@@ -11,19 +11,21 @@ public class HideOut : MonoBehaviour
     public bool isForChild;
     public bool isForAdult;
 
+    //public string time;
     // Start is called before the first frame update
     void Start()
     {
         isFake = (Random.Range(0, 2) != 0 ? true : false);
-        isEmpty = false;
+        isEmpty = true;
         isDiscovered = false;
         letClue = false;
         isForAdult = true;
-        isForChild = false;
-    }
+        isForChild = true;
 
-    // Update is called once per frame
-    void Update()
+}
+
+// Update is called once per frame
+void Update()
     {
         
     }
