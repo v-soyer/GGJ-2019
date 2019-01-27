@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour {
      
     public Text time;
     public Image textbox;
+    public Image bubble;
     public Text text;
     public GameObject GameManager;
     public Init _init;
@@ -31,11 +32,13 @@ public class Timer : MonoBehaviour {
         if ((int)timeLeft == 90)
         {
             textbox.gameObject.SetActive(true);
+            bubble.gameObject.SetActive(true);
             text.text = "The hunter... Is hungry";
         }
         if ((int)timeLeft == 85)
         {
             textbox.gameObject.SetActive(false);
+            bubble.gameObject.SetActive(false);
         }
         timeLeft -= Time.deltaTime;
         time.text = "0" +(int)Mathf.Round(timeLeft) / 60 + ":" + Mathf.Round(timeLeft) % 60;
@@ -44,29 +47,34 @@ public class Timer : MonoBehaviour {
         {
             text.text = "Put the bird's cage closer to the ground, they seem to be happier";
             textbox.gameObject.SetActive(true);
+            bubble.gameObject.SetActive(true);
         }
         if ((int)timeLeft == 65)
         {
             textbox.gameObject.SetActive(false);
+            bubble.gameObject.SetActive(false);
         }
         if ((int)timeLeft == 40)
         {
             textbox.gameObject.SetActive(true);
-
+            bubble.gameObject.SetActive(true);
             text.text = "Survey proves that bed are the worst item of the year!";
         }
         if ((int)timeLeft == 35)
         {
             textbox.gameObject.SetActive(false);
+            bubble.gameObject.SetActive(false);
         }
         if ((int)timeLeft == 10)
         {
             textbox.gameObject.SetActive(true);
+            bubble.gameObject.SetActive(true);
             text.text = "In comparison, the same survey proves that armor are a lot more reliable";
         }
         if ((int)timeLeft == 5)
         {
             textbox.gameObject.SetActive(false);
+            bubble.gameObject.SetActive(false);
         }
         if ((int)timeLeft <= 0) {
     		TimerEnd = true;
