@@ -14,7 +14,8 @@ public class InitializeHideOut : MonoBehaviour
             GameObject actual = HideOuts[i];
             if (actual.name == "Malle")
             {
-                Debug.Log(i);
+                actual.GetComponent<HideOut>().isForAdult = false;
+                actual.GetComponent<HideOut>().isForChild = true;
             }
         }
     }
