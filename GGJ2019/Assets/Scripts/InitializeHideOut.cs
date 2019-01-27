@@ -11,7 +11,12 @@ public class InitializeHideOut : MonoBehaviour
     {
         for (int i = 0; i < HideOuts.Count; i++)
         {
-
+            GameObject actual = HideOuts[i];
+            if (actual.name == "Malle")
+            {
+                actual.GetComponent<HideOut>().isForAdult = false;
+                actual.GetComponent<HideOut>().isForChild = true;
+            }
         }
     }
 
