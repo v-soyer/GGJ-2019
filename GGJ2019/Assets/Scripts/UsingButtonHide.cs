@@ -35,6 +35,10 @@ public class UsingButtonHide : MonoBehaviour
         furniture.letClue = (Random.Range(0, 2) != 0 ? true : false);
         if (furniture.isFake)
         {
+            obj.GetComponent<HideOut>().letClue = (Random.Range(0, 2) != 0 ? true : false);
+        }
+        if (obj.GetComponent<HideOut>().isFake)
+        {
             toApply.sprite = Faked;
             GetComponent<Button>().enabled = false;
             GetComponent<Image>().color = Color.grey;
