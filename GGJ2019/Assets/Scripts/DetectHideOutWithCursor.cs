@@ -6,10 +6,13 @@ public class DetectHideOutWithCursor : MonoBehaviour
 {
     RaycastHit hit = new RaycastHit();
     public Material highlightMaterial;
+    public Material highlightMaterialWithClue;
     Material originalMaterial;
     GameObject lastHighlightedObject = null;
     public List<Material> originalChildMaterial;
+    
     private Canvas can;
+    private int nbFrames;
 
     private void Start()
     {
@@ -26,20 +29,21 @@ public class DetectHideOutWithCursor : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    if (furniture.GetComponent<HideOut>().isFake)
-                    {
-                        DisplayFakeMenu(furniture);
-                    }
-                    else
+                    if (furniture.GetComponent<HideOut>().isDiscovered == true)
                     {
                         DisplayMenu(furniture);
                     }
+
                 }
-                //can = furniture.GetComponentInChildren<Canvas>();
-                //can.enabled = true;
                 if (furniture.GetComponent<MeshRenderer>())
                 {
                     HighlightObject(furniture);
+                }
+                if (nbFrames > 60)
+                {
+                    furniture.GetComponent<HideOut>().isDiscovered = true;
+                    can = furniture.GetComponentInChildren<Canvas>();
+                    can.enabled = true;
                 }
             }
             else
@@ -55,19 +59,29 @@ public class DetectHideOutWithCursor : MonoBehaviour
 
     void HighlightObject(GameObject gameObject)
     {
+        Material hlm = highlightMaterialWithClue;
+        if (gameObject.GetComponent<HideOut>().letClue)
+        {
+            hlm = highlightMaterialWithClue;
+        }
+        else
+        {
+            hlm = highlightMaterial;
+        }
+        nbFrames += 1;
         if (lastHighlightedObject != gameObject)
         {
             ClearHighlighted();
             originalMaterial = gameObject.GetComponent<MeshRenderer>().material;
             if (gameObject.GetComponent<MeshRenderer>().materials.Length == 1)
-                gameObject.GetComponent<MeshRenderer>().material = highlightMaterial;
+                gameObject.GetComponent<MeshRenderer>().material = hlm;
             else
             {
                 var materials = gameObject.GetComponent<MeshRenderer>().materials;
 
                 var mats = new Material[materials.Length];
                 for (int i = 0; i < materials.Length; i++)
-                    mats[i] = highlightMaterial;
+                    mats[i] = hlm;
                 for (int i = 0; i < materials.Length; i++)
                     originalChildMaterial.Add(materials[i]);
                 gameObject.GetComponent<MeshRenderer>().materials = mats;
@@ -78,6 +92,7 @@ public class DetectHideOutWithCursor : MonoBehaviour
 
     void ClearHighlighted()
     {
+        nbFrames = 0;
         if (lastHighlightedObject != null)
         {
             if (lastHighlightedObject.GetComponent<MeshRenderer>().materials.Length == 1)
