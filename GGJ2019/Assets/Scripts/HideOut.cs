@@ -14,7 +14,8 @@ public class HideOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isFake = (Random.Range(0, 2) != 0 ? true : false);
+        // isFake = (Random.Range(0, 2) != 0 ? true : false);
+        isFake = false;
         isEmpty = false;
         isDiscovered = false;
         letClue = false;

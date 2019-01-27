@@ -24,7 +24,11 @@ public class UsingButtonHide : MonoBehaviour
 
     public void    TaskOnClick()
     {
-        obj.GetComponent<HideOut>().letClue = (Random.Range(0, 2) != 0 ? true : false);
+        if (obj.GetComponent<HideOut>().letClue == false)
+        {
+            Debug.Log("CHIBRON");
+            obj.GetComponent<HideOut>().letClue = (Random.Range(0, 2) != 0 ? true : false);
+        }
         if (obj.GetComponent<HideOut>().isFake)
         {
             toApply.sprite = Faked;
