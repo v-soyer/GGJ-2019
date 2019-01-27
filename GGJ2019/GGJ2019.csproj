@@ -376,6 +376,7 @@
     <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderStandardMetallic.cs" />
     <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderStandardMetallicRoughness.cs" />
     <Compile Include="Assets\MeshBaker\scripts\TextureBlenders\TextureBlenderStandardSpecular.cs" />
+    <Compile Include="Assets\Scripts\ChooseClean.cs" />
     <Compile Include="Assets\Scripts\DetectHideOutWithCursor.cs" />
     <Compile Include="Assets\Scripts\HideOut.cs" />
     <Compile Include="Assets\Scripts\InitializeHideOut.cs" />
